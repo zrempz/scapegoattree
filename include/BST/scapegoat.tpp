@@ -43,7 +43,8 @@ bool ScapeGoat<T, Comparator>::insert(T key) {
   }
 
   *current = new Node<T>(key);
-  max_size_ = ++size_;
+  ++size_;
+  max_size_ = std::max(max_size_, size_);
 
   const int h_alpha = log_base(1.0 / kAlpha, max_size_);
 
